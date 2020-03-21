@@ -31,6 +31,11 @@ spec:
               fieldPath: metadata.namespace
         image: {{ .Values.image_url | quote }}
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: {{ .Values.memory_limit | quote }}
+          requests:
+            memory: {{ .Values.memory_limit | quote }}
         livenessProbe:
           failureThreshold: 3
           httpGet:
