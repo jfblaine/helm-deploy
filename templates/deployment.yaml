@@ -11,6 +11,7 @@ spec:
     matchLabels:
       app: {{ .Values.name | quote }}
       name: {{ .Values.name | quote }}
+      dbtype: {{ .Values.db_type | quote }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -21,6 +22,7 @@ spec:
       labels:
         app: {{ .Values.name | quote }}
         name: {{ .Values.name | quote }}
+        dbtype: {{ .Values.db_type | quote }}
     spec:
       containers:
       - env:
@@ -29,6 +31,8 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
+        - name: DB_TYPE
+          value: {{ .Values.db_type | quote }}
         image: {{ .Values.image_url | quote }}
         imagePullPolicy: IfNotPresent
         resources:

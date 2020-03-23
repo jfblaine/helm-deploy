@@ -30,3 +30,6 @@ npm_mirror:
 
 # URL to image which will be deployed:
 image_url:
+
+# Database connection string:
+db_type:
